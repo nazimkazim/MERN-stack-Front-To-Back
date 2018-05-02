@@ -1,34 +1,32 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const gravatar = require("gravatar");
-const bcrypt = require("bcryptjs");
+const gravatar = require('gravatar');
+const bcrypt = require('bcryptjs');
 
 // Load User model
-const User = require("../../models/User");
+const User = require('../../models/User');
 
 // @route   Get api/users/test
 // @desc    Tests users route
 // @access  Public
-router.get("/test", (req, res) => {
+router.get('/test', (req, res) => {
   res.json({
-    msg: "Users work"
+    msg: 'Users work'
   });
 });
 
 // @route   Get api/users/register
 // @desc    Register users
 // @access  Public
-router.post("/register", (req, res) => {
-  User.findOne({
-    email: req.body.email
-  }).then(user => {
+router.post('/register', (req, res) => {
+  User.findOne({ email: req.body.email }).then(user => {
     if (user) {
-      return res.status(400).json({ email: "Email already exist" });
+      return res.status(400).json({ email: 'Email already exists' });
     } else {
       const avatar = gravatar.url(req.body.email, {
-        s: "200", // Size
-        r: "pg", // rating
-        d: "mm" // Default
+        s: '200', // Size
+        r: 'pg', // rating
+        d: 'mm' // Default
       });
 
       const newUser = new User({
