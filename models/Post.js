@@ -1,4 +1,4 @@
-const mongoose = requre('mongoose');
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // Create schema
@@ -42,13 +42,13 @@ const PostSchema = new Schema({
         type: String
       },
       date: {
-        type: date,
+        type: Date,
         default: Date.now
       }
     }
   ],
   date: {
-    type: date,
+    type: Date,
     default: Date.now
   }
 });
